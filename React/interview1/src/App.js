@@ -16,7 +16,7 @@ function App() {
       <input value={todoValue} onChange={(e) => {
        setTodoValue(e.target.value)
       }}></input>
-      <button onClick={addTodo}>Add Todo</button>
+      <button className={""} onClick={addTodo}>Add Todo</button>
       {todos.map((value, index) => {
         return <h1>{index + 1}. {value}</h1>
       })}
