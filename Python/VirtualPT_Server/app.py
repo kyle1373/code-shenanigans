@@ -12,6 +12,10 @@ CORS(app)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 @app.route('/public', methods=['GET'])
+def health():
+    return jsonify({'message': 'VirtualPT python server is healthy'})
+
+@app.route('/public', methods=['GET'])
 def public_route():
     return jsonify({'message': 'This is a public route'})
 
