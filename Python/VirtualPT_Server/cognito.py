@@ -24,10 +24,11 @@ def get_cognito_user(access_token):
 
 def token_required(f):
     def decorator(*args, **kwargs):
-        access_token = request.headers.get('Authorization')
-        if access_token is None:
-            return jsonify({'message': 'Token is missing!'}), 401
+        auth_header = request.headers.get('Authorization')
+        if auth_header is None or not auth_header.startswith('Bearer '):
+            return jsonify({'message': 'Token is missing or invalid!'}), 401
 
+        access_token = auth_header.split(' ')[1]
         user = get_cognito_user(access_token)
         if user is None:
             return jsonify({'message': 'Token is invalid!'}), 401

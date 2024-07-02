@@ -1,9 +1,15 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from cognito import token_required
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
+
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 @app.route('/public', methods=['GET'])
 def public_route():
