@@ -1,0 +1,2 @@
+- Upload to bitbucket under python-segmentation-server
+- Connect to remote db testvptapp and add column where it uploads weights to s3
